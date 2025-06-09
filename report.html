@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | Lamdi Farms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .report-card {
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .report-icon {
+            font-size: 2rem;
+            color: #2E8B57;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-thin {
+            height: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation and sidebar same as livestock.html -->
+    
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Livestock Reports</h2>
+            <div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-download me-2"></i> Export All Reports
+                </button>
+            </div>
+        </div>
+        
+        <div class="row mb-4">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card report-card">
+                    <div class="card-body text-center">
+                        <div class="report-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h5>Health Summary</h5>
+                        <p class="text-muted">Current health status of all animals</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View Report</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card report-card">
+                    <div class="card-body text-center">
+                        <div class="report-icon">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                        <h5>Vaccination Report</h5>
+                        <p class="text-muted">Vaccination status and history</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View Report</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card report-card">
+                    <div class="card-body text-center">
+                        <div class="report-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h5>Feed Consumption</h5>
+                        <p class="text-muted">Feed usage and cost analysis</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View Report</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card report-card">
+                    <div class="card-body text-center">
+                        <div class="report-icon">
+                            <i class="fas fa-skull"></i>
+                        </div>
+                        <h5>Mortality Analysis</h5>
+                        <p class="text-muted">Mortality rates and causes</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Livestock Population Trends</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="populationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Current Inventory</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Cattle</span>
+                                <span>45 (21%)</span>
+                            </div>
+                            <div class="progress progress-thin">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 21%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Poultry</span>
+                                <span>120 (56%)</span>
+                            </div>
+                            <div class="progress progress-thin">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 56%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Goats</span>
+                                <span>35 (16%)</span>
+                            </div>
+                            <div class="progress progress-thin">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 16%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Sheep</span>
+                                <span>15 (7%)</span>
+                            </div>
+                            <div class="progress progress-thin">
+                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 7%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Vaccination Coverage</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="vaccinationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Monthly Mortality Rate</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="mortalityTrendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Generate Custom Report</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Report Type</label>
+                            <select class="form-select" required>
+                                <option value="" selected disabled>Select report type</option>
+                                <option>Health Summary</option>
+                                <option>Vaccination Status</option>
+                                <option>Feed Consumption</option>
+                                <option>Mortality Analysis</option>
+                                <option>Financial Summary</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Time Period</label>
+                            <select class="form-select" required>
+                                <option value="" selected disabled>Select time period</option>
+                                <option>Last 7 Days</option>
+                                <option>Last 30 Days</option>
+                                <option>Last 3 Months</option>
+                                <option>Last 6 Months</option>
+                                <option>Last Year</option>
+                                <option>Custom Range</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Start Date (if custom)</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">End Date (if custom)</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Animal Type</label>
+                        <select class="form-select">
+                            <option value="" selected>All Animals</option>
+                            <option>Cattle</option>
+                            <option>Poultry</option>
+                            <option>Goats</option>
+                            <option>Sheep</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Format</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="format" id="pdf" checked>
+                            <label class="form-check-label" for="pdf">
+                                PDF
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="format" id="excel">
+                            <label class="form-check-label" for="excel">
+                                Excel
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-file-download me-2"></i> Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Population Chart
+        const populationCtx = document.getElementById('populationChart').getContext('2d');
+        const populationChart = new Chart(populationCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [
+                    {
+                        label: 'Cattle',
+                        data: [40, 42, 45, 43, 44, 45],
+                        borderColor: '#2E8B57',
+                        backgroundColor: 'rgba(46, 139, 87, 0.1)',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Poultry',
+                        data: [100, 105, 110, 115, 118, 120],
+                        borderColor: '#17A2B8',
+                        backgroundColor: 'rgba(23, 162, 184, 0.1)',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Goats',
+                        data: [30, 32, 33, 34, 35, 35],
+                        borderColor: '#FFC107',
+                        backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+        
+        // Vaccination Chart
+        const vaccinationCtx = document.getElementById('vaccinationChart').getContext('2d');
+        const vaccinationChart = new Chart(vaccinationCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Anthrax', 'Newcastle', 'PPR', 'Rabies'],
+                datasets: [{
+                    label: 'Vaccination Coverage (%)',
+                    data: [95, 85, 75, 60],
+                    backgroundColor: [
+                        'rgba(46, 139, 87, 0.7)',
+                        'rgba(23, 162, 184, 0.7)',
+                        'rgba(255, 193, 7, 0.7)',
+                        'rgba(220, 53, 69, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(46, 139, 87, 1)',
+                        'rgba(23, 162, 184, 1)',
+                        'rgba(255, 193, 7, 1)',
+                        'rgba(220, 53, 69, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+        
+        // Mortality Trend Chart
+        const mortalityTrendCtx = document.getElementById('mortalityTrendChart').getContext('2d');
+        const mortalityTrendChart = new Chart(mortalityTrendCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Mortality Rate (%)',
+                    data: [3.2, 2.8, 2.5, 2.3, 2.1,2.0],
+                }]
+            }
+        });

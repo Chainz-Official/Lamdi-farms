@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortality Tracking | Lamdi Farms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .cause-badge {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .cause-disease {
+            background-color: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .cause-predator {
+            background-color: #E2E3E5;
+            color: #383D41;
+        }
+        
+        .cause-unknown {
+            background-color: #D1ECF1;
+            color: #0C5460;
+        }
+        
+        .mortality-chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .age-badge {
+            background-color: #E8F5E9;
+            color: #2E8B57;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation and sidebar same as livestock.html -->
+    
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Mortality Tracking</h2>
+            <div>
+                <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addMortalityModal">
+                    <i class="fas fa-plus me-2"></i> Record Mortality
+                </button>
+                <button class="btn btn-outline-primary">
+                    <i class="fas fa-download me-2"></i> Export
+                </button>
+            </div>
+        </div>
+        
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-danger mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">This Month</h5>
+                        <h2 class="card-text">4</h2>
+                        <p class="mb-0">1.6% mortality rate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-warning mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Last Month</h5>
+                        <h2 class="card-text">6</h2>
+                        <p class="mb-0">2.4% mortality rate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-secondary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Annual Average</h5>
+                        <h2 class="card-text">2.1%</h2>
+                        <p class="mb-0">-0.3% from last year</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Mortality Records</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Animal</th>
+                                        <th>Type</th>
+                                        <th>Age</th>
+                                        <th>Probable Cause</th>
+                                        <th>Recorded By</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jun 12, 2023</td>
+                                        <td>Chicken #45</td>
+                                        <td>Poultry</td>
+                                        <td><span class="age-badge">14 weeks</span></td>
+                                        <td><span class="cause-badge cause-disease">Disease</span></td>
+                                        <td>Kwame</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- More rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <nav class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Mortality Analysis</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mortality-chart-container">
+                            <canvas id="mortalityChart"></canvas>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6>Top Causes This Month</h6>
+                            <div class="mb-2">
+                                <div class="d-flex justify-content-between">
+                                    <span>Disease</span>
+                                    <span>3 (75%)</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="d-flex justify-content-between">
+                                    <span>Predators</span>
+                                    <span>1 (25%)</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Mortality Record Modal -->
+    <div class="modal fade" id="addMortalityModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Record Animal Mortality</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Date of Death</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Animal ID</label>
+                            <select class="form-select" required>
+                                <option value="" selected disabled>Select animal</option>
+                                <option>CT-1023 (Bull #1)</option>
+                                <option>PL-2045 (Chicken #45)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Animal Type</label>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Age</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control">
+                                    <select class="form-select" style="max-width: 100px;">
+                                        <option>Days</option>
+                                        <option>Weeks</option>
+                                        <option>Months</option>
+                                        <option>Years</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Probable Cause</label>
+                            <select class="form-select" required>
+                                <option value="" selected disabled>Select cause</option>
+                                <option>Disease</option>
+                                <option>Predator</option>
+                                <option>Accident</option>
+                                <option>Unknown</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Specific Disease (if applicable)</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="necropsyDone">
+                            <label class="form-check-label" for="necropsyDone">
+                                Necropsy performed
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Record Mortality</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Mortality Chart
+        const mortalityCtx = document.getElementById('mortalityChart').getContext('2d');
+        const mortalityChart = new Chart(mortalityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Cattle', 'Poultry', 'Goats', 'Sheep'],
+                datasets: [{
+                    data: [1, 2, 1, 0],
+                    backgroundColor: [
+                        '#2E8B57',
+                        '#FFC107',
+                        '#DC3545',
+                        '#6C757D'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

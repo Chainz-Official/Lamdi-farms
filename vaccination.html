@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head as livestock.html -->
+    <title>Vaccination Management | Lamdi Farms</title>
+    
+</head>
+<body>
+    <!-- Same navigation and sidebar as livestock.html -->
+
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Vaccination Management</h2>
+            <div>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVaccinationModal">
+                    <i class="fas fa-plus me-2"></i> Add Vaccination
+                </button>
+            </div>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filter-card">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Animal Type</label>
+                    <select class="form-select">
+                        <option selected>All Animals</option>
+                        <option>Cattle</option>
+                        <option>Poultry</option>
+                        <option>Goats</option>
+                        <option>Sheep</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Vaccine Type</label>
+                    <select class="form-select">
+                        <option selected>All Vaccines</option>
+                        <option>Anthrax</option>
+                        <option>Newcastle</option>
+                        <option>Foot & Mouth</option>
+                        <option>PPR</option>
+                        <option>Rabies</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Status</label>
+                    <select class="form-select">
+                        <option selected>All Statuses</option>
+                        <option>Upcoming</option>
+                        <option>Overdue</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Vaccination Table -->
+        <div class="card">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Vaccination Records</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Animal ID</th>
+                                <th>Type</th>
+                                <th>Vaccine</th>
+                                <th>Due Date</th>
+                                <th>Completed Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CT-1023</td>
+                                <td>Cattle</td>
+                                <td>Anthrax</td>
+                                <td>Jun 5, 2023</td>
+                                <td>-</td>
+                                <td><span class="status-badge overdue">Overdue</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-success">Mark Done</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Reschedule</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PL-2045</td>
+                                <td>Poultry</td>
+                                <td>Newcastle</td>
+                                <td>Jun 12, 2023</td>
+                                <td>-</td>
+                                <td><span class="status-badge upcoming">Upcoming</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-success">Mark Done</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Reschedule</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>GT-3012</td>
+                                <td>Goats</td>
+                                <td>PPR</td>
+                                <td>May 20, 2023</td>
+                                <td>May 18, 2023</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">Details</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Vaccination Modal -->
+    <div class="modal fade" id="addVaccinationModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Vaccination Record</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Animal/Group ID</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Animal Type</label>
+                            <select class="form-select" required>
+                                <option value="">Select type</option>
+                                <option>Cattle</option>
+                                <option>Poultry</option>
+                                <option>Goats</option>
+                                <option>Sheep</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Vaccine Type</label>
+                            <select class="form-select" required>
+                                <option value="">Select vaccine</option>
+                                <option>Anthrax</option>
+                                <option>Newcastle</option>
+                                <option>Foot & Mouth</option>
+                                <option>PPR</option>
+                                <option>Rabies</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Vaccination</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/livestock.js"></script>
+</body>
+</html>

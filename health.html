@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head as livestock.html -->
+    <title>Feed Records | Lamdi Farms</title>
+   
+    
+</head>
+<body>
+    <!-- Same navigation and sidebar as livestock.html -->
+
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Feed Records</h2>
+            <div>
+                <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addFeedModal">
+                    <i class="fas fa-plus me-2"></i> Add Feed Record
+                </button>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addScheduleModal">
+                    <i class="fas fa-calendar-plus me-2"></i> Create Schedule
+                </button>
+            </div>
+        </div>
+        
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#records">Feed Records</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#schedules">Feed Schedules</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#analysis">Consumption Analysis</a>
+            </li>
+        </ul>
+        
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="records">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <h5 class="mb-0">Feed Records</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row g-2">
+                                    <div class="col-md-4">
+                                        <select class="form-select form-select-sm">
+                                            <option>All Animal Types</option>
+                                            <option>Cattle</option>
+                                            <option>Poultry</option>
+                                            <option>Goats</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="date" class="form-control form-control-sm">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-sm btn-primary w-100">Filter</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Animal Group</th>
+                                        <th>Feed Type</th>
+                                        <th>Quantity</th>
+                                        <th>Time</th>
+                                        <th>Recorded By</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jun 10, 2023</td>
+                                        <td>Poultry House A</td>
+                                        <td><span class="feed-type-badge">Starter Mash</span></td>
+                                        <td>25 kg</td>
+                                        <td>Morning</td>
+                                        <td>Kwame</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jun 10, 2023</td>
+                                        <td>Cattle Pen 1</td>
+                                        <td><span class="feed-type-badge">Grass & Concentrate</span></td>
+                                        <td>50 kg</td>
+                                        <td>Afternoon</td>
+                                        <td>Yaw</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="schedules">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="feed-schedule-card">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Poultry House B</h5>
+                                    <p class="mb-1"><strong>Feed:</strong> Grower Mash</p>
+                                    <p class="mb-1"><strong>Schedule:</strong> Daily, 7:00 AM & 3:00 PM</p>
+                                    <p><strong>Quantity:</strong> 20kg per feeding</p>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Pause</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="feed-schedule-card warning">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Cattle Pen 2</h5>
+                                    <p class="mb-1"><strong>Feed:</strong> Grass & Supplement</p>
+                                    <p class="mb-1"><strong>Schedule:</strong> Every 2 days, 6:00 AM</p>
+                                    <p><strong>Quantity:</strong> 30kg per feeding</p>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Pause</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="analysis">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Feed Consumption Analysis</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center py-4">
+                            <img src="../images/feed-chart-placeholder.png" alt="Feed Consumption Chart" class="img-fluid" style="max-height: 300px;">
+                            <p class="mt-3 text-muted">Feed consumption trends and analysis will be displayed here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Feed Record Modal -->
+    <div class="modal fade" id="addFeedModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Feed Record</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Date</label>
+                            <input type="date" class="

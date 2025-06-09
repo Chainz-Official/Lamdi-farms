@@ -1,0 +1,641 @@
+/* === Base Styles === */
+:root {
+  --primary-green: #2E8B57;       /* Sea Green */
+  --dark-green: #1F6B3D;          /* Darker Green */
+  --light-green: #E8F5E9;         /* Very Light Green */
+  --accent-yellow: #FFD700;       /* Gold */
+  --dark-text: #333333;
+  --light-text: #FFFFFF;
+  --gray-bg: #F8F9FA;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--dark-text);
+  line-height: 1.6;
+  background-color: #eec2c2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary-green);
+  color: var(--light-text);
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-green);
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow);
+}
+
+.btn-outline-light {
+  border-color: var(--light-text);
+  color: var(--light-text);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--light-text);
+  color: var(--primary-green);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* === Navigation === */
+.navbar {
+  background-color: var(--primary-green) !important;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+  height: 50px;
+  transition: var(--transition);
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.05);
+}
+
+.nav-link {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--light-text);
+  transform: translateY(-2px);
+}
+
+/* === Hero Section === */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), url('../images/farm-hero.jpg'));
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--light-text);
+  padding: 8rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown 1s ease;
+}
+
+.hero-section .lead {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1.5s ease;
+}
+
+/* === Feature Cards === */
+.feature-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  height: 100%;
+  transition: var(--transition);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  border-bottom: 4px solid transparent;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  border-bottom-color: var(--primary-green);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--primary-green);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1);
+  color: var(--dark-green);
+}
+
+/* === About Section === */
+#about {
+  padding: 5rem 0;
+  background-color: white;
+}
+
+#about img {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+#about img:hover {
+  transform: scale(1.02);
+}
+
+#about ul {
+  list-style-type: none;
+}
+
+#about li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 2rem;
+}
+
+#about li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 1rem;
+  height: 2px;
+  background-color: var(--primary-green);
+}
+
+/* === Contact Section === */
+#contact {
+  padding: 5rem 0;
+  background-color: var(--gray-bg);
+}
+
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.form-control {
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.25);
+}
+
+/* === Footer === */
+footer {
+  background-color: var(--dark-green);
+  color: var(--light-text);
+  padding: 3rem 0 1.5rem;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 0.5rem;
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  background-color: var(--primary-green);
+  transform: translateY(-3px);
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Responsive Design === */
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 6rem 0;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-brand img {
+    height: 40px;
+  }
+  
+  .hero-section {
+    padding: 4rem 0;
+    background-attachment: scroll;
+  }
+  
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+  }
+}
+  .sidebar {
+            width: 250px;
+            background-color: #1a472a;
+            color: white;
+            height: 100vh;
+            position: fixed;
+        }
+        
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        
+        .stat-card {
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            border-left: 4px solid transparent;
+        }
+        
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: rgba(255,255,255,0.1);
+            border-left-color: #f8f9fa;
+            color: white;
+        }
+        
+        .sidebar .nav-link i {
+            width: 24px;
+            text-align: center;
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+             .filter-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .status-badge {
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-badge.completed {
+            background-color: #e8f5e9;
+            color: #2e8b57;
+        }
+        
+        .status-badge.upcoming {
+            background-color: #fff8e1;
+            color: #ffa000;
+        }
+        
+        .status-badge.overdue {
+            background-color: #ffebee;
+            color: #dc3545;
+        }
+            .feed-schedule-card {
+            border-left: 4px solid #2e8b57;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 4px;
+        }
+        
+        .feed-schedule-card.warning {
+            border-left-color: #ffa500;
+        }
+        
+        .feed-type-badge {
+            background-color: #e8f5e9;
+            color: #2e8b57;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+           .register-container {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('../images/farm-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+        
+        .register-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .register-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .register-header {
+            background-color: #2E8B57;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .register-body {
+            padding: 2rem;
+        }
+        
+        .form-control {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            border: 1px solid #ddd;
+        }
+        
+        .form-control:focus {
+            border-color: #2E8B57;
+            box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.25);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .btn-register {
+            background-color: #2E8B57;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-register:hover {
+            background-color: #1F6B3D;
+            transform: translateY(-2px);
+        }
+        
+        .login-link {
+            color: #2E8B57;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link:hover {
+            text-decoration: underline;
+        }
+        
+        .input-group-text {
+            background-color: #e9ecef;
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .password-toggle {
+            cursor: pointer;
+            background-color: #e9ecef;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .is-invalid {
+            border-color: #dc3545;
+        }
+        
+        .invalid-feedback {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: -0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .valid-feedback {
+            color: #28a745;
+            font-size: 0.875rem;
+            margin-top: -0.75rem;
+            margin-bottom: 1rem;
+        }
+          .health-card {
+            border-left: 4px solid #2E8B57;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .health-card.alert {
+            border-left-color: #DC3545;
+        }
+        
+        .health-card.warning {
+            border-left-color: #FFC107;
+        }
+        
+        .health-status {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .status-healthy {
+            background-color: #28A745;
+        }
+        
+        .status-sick {
+            background-color: #DC3545;
+        }
+        
+        .status-recovering {
+            background-color: #FFC107;
+        }
+        
+        .animal-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+           .vaccine-badge {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .vaccine-anthrax {
+            background-color: #E8F5E9;
+            color: #2E8B57;
+        }
+        
+        .vaccine-newcastle {
+            background-color: #FFF8E1;
+            color: #FFA000;
+        }
+        
+        .vaccine-ppr {
+            background-color: #FFEBEE;
+            color: #DC3545;
+        }
+        
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .status-due {
+            background-color: #FFF3CD;
+            color: #856404;
+        }
+        
+        .status-completed {
+            background-color: #D4EDDA;
+            color: #155724;
+        }
+        
+        .status-overdue {
+            background-color: #F8D7DA;
+            color: #721C24;
+        }
+            .feed-type-badge {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .feed-mash {
+            background-color: #E8F5E9;
+            color: #2E8B57;
+        }
+        
+        .feed-grass {
+            background-color: #D4EDDA;
+            color: #155724;
+        }
+        
+        .feed-supplement {
+            background-color: #FFF3CD;
+            color: #856404;
+        }
+        
+        .schedule-card {
+            border-left: 4px solid #2E8B57;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 4px;
+        }
+        
+        .schedule-card.warning {
+            border-left-color: #FFC107;
+        }
+    
